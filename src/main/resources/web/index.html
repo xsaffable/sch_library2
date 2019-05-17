@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<meta charset="utf-8">
+		<title>图书馆</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/js/layui/css/layui.css}" media="all">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/index/index.css}">
+	</head>
+	<body>
+		<div class="layui-layout-admin">
+			<!--头部-->
+			<div class="layui-header">
+				<div class="layui-logo">欢迎访问图书管理系统</div>
+				<ul class="layui-nav layui-layout-left">
+					<li class="layui-nav-item"><a href="javascript:void(0)">控制台</a></li>
+					<li class="layui-nav-item"><a href="javascript:;">商品管理</a></li>
+					<li class="layui-nav-item">
+						<a href="javascript:;">其他系统</a>
+						<dl class="layui-nav-child">
+							<dd><a href="javascript:;">邮件管理</a></dd>
+							<dd><a href="javascript:;">消息管理</a></dd>
+							<dd><a href="javascript:;">授权管理</a></dd>
+						</dl>
+					</li>
+				</ul>
+				<ul class="layui-nav layui-layout-right">
+					<li class="layui-nav-item">
+						<a href=""><img src="http://m.zhengjinfan.cn/images/0.jpg" class="layui-nav-img">affable</a>
+						<dl class="layui-nav-child">
+							<dd><a href="">基本资料</a></dd>
+							<dd><a href="">安全设置</a></dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+
+			<!--左侧-->
+			<div class="layui-side layui-bg-black">
+				<div class="layui-side-scroll">
+					<ul class="layui-nav layui-nav-tree" lay-filter="leftNavbar">
+						<li class="layui-nav-item">
+							<a href="javascript:;">用户管理</a>
+							<dl class="layui-nav-child">
+								<dd lay-id="user"><a href="javascript:;" data-options="user_show">普通用户管理</a></dd>
+								<dd lay-id="user_admin"><a href="javascript:;" data-options="user_admin_show">管理员管理</a></dd>
+							</dl>
+						</li>
+						<li class="layui-nav-item">
+							<a href="javascript:;">书籍管理</a>
+							<dl class="layui-nav-child">
+								<dd lay-id="book"><a href="javascript:;" data-options="book_show">图书编辑</a></dd>
+								<dd><a href="javascript:;">种类编辑</a></dd>
+							</dl>
+						</li>
+						<li class="layui-nav-item">
+							<a href="javascript:;">平台监控</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<!--中间主体-->
+			<div class="layui-body" id="container">
+				<div class="layui-tab" lay-filter="tabs" lay-allowClose="true">
+					<ul class="layui-tab-title">
+						<li class="layui-this">首页</li>
+					</ul>
+					<div class="layui-tab-content">
+						<div class="layui-tab-item layui-show">首页内容</div>
+					</div>
+				</div>
+			</div>
+
+			<!--底部-->
+			<div class="layui-footer">
+				<center>济南大学图书管理系统</center>
+			</div>
+		</div>
+		<script th:src="@{/js/layui/layui.all.js}"></script>
+		<script th:src="@{/js/jquery.js}"></script>
+		<script th:src="@{/js/index.js}"></script>
+	</body>
+</html>

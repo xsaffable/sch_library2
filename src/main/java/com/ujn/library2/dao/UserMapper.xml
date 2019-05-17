@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ujn.library2.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.ujn.library2.entity.User">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="sex" jdbcType="TINYINT" property="sex" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+  </resultMap>
+
+  <select id="getAllByPage" resultMap="BaseResultMap">
+    select * from user order by createtime limit ${start},${pageSize}
+  </select>
+
+  <select id="count" resultType="Integer">
+    select count(*) from user
+  </select>
+
+  <insert id="addUser" parameterType="com.ujn.library2.entity.User">
+    insert into user (id,name,password,age,sex)
+    values (#{id},#{name},#{password},#{age},#{sex})
+  </insert>
+
+  <delete id="delUser" parameterType="com.ujn.library2.entity.User">
+    delete from user where id=#{id}
+  </delete>
+
+  <update id="updateUser" parameterType="com.ujn.library2.entity.User">
+    <if test="id!=null">
+      update user
+      <set>
+        <if test="name!=null and name!=''">
+          name=#{name},
+        </if>
+        <if test="password!=null and password!=''">
+          password=#{password},
+        </if>
+        <if test="age!=null">
+          age=#{age},
+        </if>
+        <if test="sex!=null">
+          sex=#{sex},
+        </if>
+        <if test="createtime!=null and createtime!=''">
+          createtime=#{createtime},
+        </if>
+      </set>
+      where id=#{id}
+    </if>
+
+  </update>
+
+  <select id="getUserByName" parameterType="String" resultMap="BaseResultMap">
+    select * from user where name like concat('%',#{name},'%')
+  </select>
+
+</mapper>

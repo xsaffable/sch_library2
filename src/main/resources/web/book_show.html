@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<title>图书编辑</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/js/layui/css/layui.css}" media="all">
+	</head>
+	<body>
+		<form class="layui-form">
+            搜索书名：
+            <div class="layui-inline">
+                <input type="text" lay-verify="required" class="layui-input" name="bookName" id="book_search" >
+            </div>
+            <button class="layui-btn" lay-submit lay-filter="searchBook">搜索</button>
+			<button class="layui-btn" type="reload">展示全部</button>
+		</form>
+		<table id="book_table" lay-filter="book"></table>
+
+		<div class="layui-row" id="book_show" style="display: none;">
+			<div class="layui-col-md10" style="margin-top:30px">
+				<div class="layui-form">
+					<div class="layui-form-item">
+						<label class="layui-form-label">书名：</label>
+						<div class="layui-input-block">
+							<input type="text" name="bookName" class="layui-input" disabled>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">作者：</label>
+						<div class="layui-input-block">
+							<input type="text" name="author" class="layui-input" disabled>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">出版社：</label>
+						<div class="layui-input-block">
+							<input type="text" name="press" class="layui-input" disabled>
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<label class="layui-form-label">分类：</label>
+						<div class="layui-input-block">
+							<input type="text" name="category" class="layui-input" disabled>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="layui-row" id="book_edit" style="display: none;">
+			<div class="layui-col-md10" style="margin-top:30px">
+				<form class="layui-form">
+					<div class="layui-form-item"  style="display: none">
+						<label class="layui-form-label">id：</label>
+						<div class="layui-input-block">
+							<input type="text" name="id" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">书名：</label>
+						<div class="layui-input-block">
+							<input type="text" name="bookName" lay-verify="required" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">作者：</label>
+						<div class="layui-input-block">
+							<input type="text" name="author" lay-verify="required" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">出版社：</label>
+						<div class="layui-input-block">
+							<input type="text" name="press" lay-verify="required" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">分类：</label>
+						<div class="layui-input-block">
+							<input type="text" name="category" lay-verify="required" class="layui-input">
+						</div>
+					</div>
+					<!--<div class="layui-form-item">-->
+						<!--<div class="layui-input-block">-->
+							<!--<button class="layui-btn" lay-submit lay-filter="*">修改</button>-->
+							<!--&lt;!&ndash;<button type="reset" class="layui-btn layui-btn-primary">重置</button>&ndash;&gt;-->
+						<!--</div>-->
+					<!--</div>-->
+				</form>
+			</div>
+		</div>
+
+		<script th:src="@{/js/layui/layui.all.js}"></script>
+		<script th:src="@{/js/jquery.js}"></script>
+		<script type="text/html" id="barDemo">
+			<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+			<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+		</script>
+		<script th:src="@{/js/book_show.js}" th:inline="none"></script>
+	</body>
+</html>
