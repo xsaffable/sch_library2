@@ -18,6 +18,10 @@
     select count(*) from book
   </select>
 
+  <select id="countByName" parameterType="String" resultType="Integer">
+    select count(*) from book where book_name like concat('%',#{bookName},'%')
+  </select>
+
   <update id="updateBook" parameterType="com.ujn.library2.entity.Book">
     <if test="id!=null">
       update book
@@ -53,6 +57,10 @@
 
   <select id="getByBookName" parameterType="String" resultMap="BaseResultMap">
     select * from book where book_name like concat('%',#{bookName},'%')
+  </select>
+
+  <select id="getAllByPageByName" resultMap="BaseResultMap">
+    select * from book where book_name like concat('%',#{bookName},'%') order by createtime limit ${start},${pageSize}
   </select>
 
 </mapper>

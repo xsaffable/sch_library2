@@ -4,6 +4,7 @@ import com.ujn.library2.data.dataEntity.BookTableData;
 import com.ujn.library2.data.dataInterface.ParseBookTableData;
 import com.ujn.library2.entity.Book;
 import com.ujn.library2.service.BookService;
+import com.ujn.library2.util.ResponseResultVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -45,10 +46,16 @@ public class BookController {
         bookService.delBook(book);
     }
 
+//    @ResponseBody
+//    @RequestMapping(value = "/search.action", method = RequestMethod.GET)
+//    public BookTableData getByBookName(String bookName) throws Exception {
+//        return parseBookTableData.getByBookName(bookName, bookService);
+//    }
+
     @ResponseBody
     @RequestMapping(value = "/search.action", method = RequestMethod.GET)
-    public BookTableData getByBookName(String bookName) throws Exception {
-        return parseBookTableData.getByBookName(bookName, bookService);
+    public ResponseResultVO getByBookName(String page, String limit, String bookName) throws Exception {
+        return bookService.getAllByPageByName(page, limit, bookName);
     }
 
 }

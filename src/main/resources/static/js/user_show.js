@@ -357,14 +357,14 @@ layui.use('form', function () {
 
         form.on('submit(searchUser)', function (userData) {
             var name = eval(userData.field).name;
-            $('#user_search').val(''); // 搜索框置为空
+            // $('#user_search').val(''); // 搜索框置为空
             table.render({
                 elem: '#user_table',
                 height: 'auto',
                 url: './user/search.action', //数据接口
                 method: 'get',
                 where: {'name': name},
-                page: false, //关闭分页
+                page: true, //开启分页
                 toolbar: 'default',
                 autoSort: false,
                 cols: [[ //表头
@@ -382,9 +382,9 @@ layui.use('form', function () {
                     {field: 'createtime',title: '创建时间',sort: true},
                     {fixed: 'right',align:'center',toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
                 ]],
-                done: function (res, curr, count) {
-                    layer.msg('查询到'+count+'条结果');
-                }
+                // done: function (res, curr, count) {
+                //     layer.msg('查询到'+count+'条结果');
+                // }
             });
             return false;
         });

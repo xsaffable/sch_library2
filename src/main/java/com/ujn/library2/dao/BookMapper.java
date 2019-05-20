@@ -11,6 +11,8 @@ public interface BookMapper {
 
     int count() throws Exception;
 
+    int countByName(String bookName) throws Exception;
+
     void updateBook(Book book) throws Exception;
 
     void addBook(Book book) throws Exception;
@@ -18,5 +20,7 @@ public interface BookMapper {
     void delBook(Book book) throws Exception;
 
     List<Book> getByBookName(@Param("bookName") String bookName) throws Exception;
+
+    List<Book> getAllByPageByName(@Param("start") int start, @Param("pageSize") int pageSize, @Param("bookName") String bookName) throws Exception;
 
 }
