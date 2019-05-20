@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ujn.library2.dao.BorrowingRecordMapper">
+    <resultMap id="BaseResultMap" type="com.ujn.library2.entity.BorrowBook">
+        <result column="book_name" property="bookName" jdbcType="VARCHAR" />
+        <result column="author" property="author" jdbcType="VARCHAR" />
+        <result column="category" property="category" jdbcType="VARCHAR" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="state" property="state" jdbcType="INTEGER" />
+        <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <select id="countAll" resultType="Integer">
+        select count(*) from borrowing_record
+    </select>
+
+    <select id="getAllByPage" parameterType="Integer" resultMap="BaseResultMap">
+      select br_b.book_name,br_b.author,br_b.category,u.name username,br_b.state,br_b.createtime from
+        (select br.user_id,br.state,br.createtime,b.book_name,b.author,b.category from
+        (select br.user_id,br.book_id,br.state,br.createtime from borrowing_record br) br
+        left join book b on br.book_id=b.id) br_b
+      left join user u on br_b.user_id=u.id order by createtime desc limit ${start},${pageSize}
+    </select>
+
+    <select id="getAllByPageByUsername" resultMap="BaseResultMap">
+      select br_b.book_name,br_b.author,br_b.category,u.name username,br_b.state,br_b.createtime from
+        (select br.user_id,br.state,br.createtime,b.book_name,b.author,b.category from
+        (select br.user_id,br.book_id,br.state,br.createtime from borrowing_record br) br
+        left join book b on br.book_id=b.id) br_b
+      left join user u on br_b.user_id=u.id where u.name like concat('%',#{username},'%') order by createtime desc limit ${start},${pageSize}
+    </select>
+
+    <select id="countAllByUsername" parameterType="String" resultType="Integer">
+      select count(*) from
+      (select br_b.book_name,br_b.author,br_b.category,u.name username,br_b.state,br_b.createtime from
+        (select br.user_id,br.state,br.createtime,b.book_name,b.author,b.category from
+        (select br.user_id,br.book_id,br.state,br.createtime from borrowing_record br) br
+        left join book b on br.book_id=b.id) br_b
+      left join user u on br_b.user_id=u.id where u.name like concat('%',#{username},'%')) br
+    </select>
+
+</mapper>

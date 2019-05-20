@@ -14,7 +14,7 @@ layui.use('form', function () {
 			autoSort: false,
 			cols: [[ //表头
 				{checkbox: true, fixed: true},
-				{field: 'id',title: 'id',fixed: 'left',width:'10%'},
+				{title: 'id',fixed: 'left',width:'10%',type: "numbers"},
 				{field: 'bookName',title: '书名'},
 				{field: 'author',title: '作者'},
 				{field: 'press',title: '出版社'},
@@ -174,7 +174,7 @@ layui.use('form', function () {
 											autoSort: false,
 											cols: [[ //表头
 												{checkbox: true, fixed: true},
-												{field: 'id',title: 'id',fixed: 'left',width:'10%'},
+												{title: 'id',fixed: 'left',width:'10%',type: "numbers"},
 												{field: 'bookName',title: '书名'},
 												{field: 'author',title: '作者'},
 												{field: 'press',title: '出版社'},
@@ -338,7 +338,7 @@ layui.use('form', function () {
 				autoSort: false,
 				cols: [[ //表头
 					{checkbox: true, fixed: true},
-					{field: 'id',title: 'id',fixed: 'left',width:'10%'},
+					{title: 'id',fixed: 'left',width:'10%',type: "numbers"},
 					{field: 'bookName',title: '书名'},
 					{field: 'author',title: '作者'},
 					{field: 'press',title: '出版社'},

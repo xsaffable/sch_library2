@@ -14,23 +14,24 @@
 			<div class="layui-header">
 				<div class="layui-logo">欢迎访问图书管理系统</div>
 				<ul class="layui-nav layui-layout-left">
-					<li class="layui-nav-item"><a href="javascript:void(0)">控制台</a></li>
-					<li class="layui-nav-item"><a href="javascript:;">商品管理</a></li>
-					<li class="layui-nav-item">
-						<a href="javascript:;">其他系统</a>
-						<dl class="layui-nav-child">
-							<dd><a href="javascript:;">邮件管理</a></dd>
-							<dd><a href="javascript:;">消息管理</a></dd>
-							<dd><a href="javascript:;">授权管理</a></dd>
-						</dl>
-					</li>
+					<!--<li class="layui-nav-item"><a href="javascript:void(0)">控制台</a></li>-->
+					<!--<li class="layui-nav-item"><a href="javascript:void(0);">商品管理</a></li>-->
+					<!--<li class="layui-nav-item">-->
+						<!--<a href="javascript:void(0);">其他系统</a>-->
+						<!--<dl class="layui-nav-child">-->
+							<!--<dd><a href="javascript:void(0);">邮件管理</a></dd>-->
+							<!--<dd><a href="javascript:void(0);">消息管理</a></dd>-->
+							<!--<dd><a href="javascript:void(0);">授权管理</a></dd>-->
+						<!--</dl>-->
+					<!--</li>-->
 				</ul>
 				<ul class="layui-nav layui-layout-right">
 					<li class="layui-nav-item">
-						<a href=""><img src="http://m.zhengjinfan.cn/images/0.jpg" class="layui-nav-img">affable</a>
+						<a href="javascript:void(0);"><img th:src="@{/img/index/head.png}" class="layui-nav-img"><span th:text="${session.username}"></span></a>
 						<dl class="layui-nav-child">
-							<dd><a href="">基本资料</a></dd>
-							<dd><a href="">安全设置</a></dd>
+							<!--<dd><a href="">基本资料</a></dd>-->
+							<!--<dd><a href="">安全设置</a></dd>-->
+							<dd><a href="../login/logout.action">退出</a> </dd>
 						</dl>
 					</li>
 				</ul>
@@ -44,14 +45,14 @@
 							<a href="javascript:;">用户管理</a>
 							<dl class="layui-nav-child">
 								<dd lay-id="user"><a href="javascript:;" data-options="user_show">普通用户管理</a></dd>
-								<dd lay-id="user_admin"><a href="javascript:;" data-options="user_admin_show">管理员管理</a></dd>
+								<!--<dd lay-id="user_admin"><a href="javascript:;" data-options="user_admin_show">管理员管理</a></dd>-->
 							</dl>
 						</li>
 						<li class="layui-nav-item">
 							<a href="javascript:;">书籍管理</a>
 							<dl class="layui-nav-child">
 								<dd lay-id="book"><a href="javascript:;" data-options="book_show">图书编辑</a></dd>
-								<dd><a href="javascript:;">种类编辑</a></dd>
+								<dd lay-id="borrow"><a href="javascript:;" data-options="borrow_message">借阅信息</a></dd>
 							</dl>
 						</li>
 						<li class="layui-nav-item">
@@ -68,7 +69,7 @@
 						<li class="layui-this">首页</li>
 					</ul>
 					<div class="layui-tab-content">
-						<div class="layui-tab-item layui-show">首页内容</div>
+						<div class="layui-tab-item layui-show">图书管理系统</div>
 					</div>
 				</div>
 			</div>

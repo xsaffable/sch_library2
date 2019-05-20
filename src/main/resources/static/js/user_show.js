@@ -13,7 +13,7 @@ layui.use('form', function () {
             autoSort: false,
             cols: [[ //表头
                 {checkbox: true, fixed: true},
-                {field: 'id',title: 'id',fixed: 'left',width:'10%'},
+                {title: 'id',fixed: 'left',width:'10%',type: "numbers"},
                 {field: 'name',title: '姓名'},
                 {field: 'password',title: '密码'},
                 {field: 'age',title: '年龄'},
@@ -194,7 +194,7 @@ layui.use('form', function () {
                                             autoSort: false,
                                             cols: [[ //表头
                                                 {checkbox: true, fixed: true},
-                                                {field: 'id',title: 'id',fixed: 'left',width:'10%'},
+                                                {title: 'id',fixed: 'left',width:'10%',type: "numbers"},
                                                 {field: 'name',title: '姓名'},
                                                 {field: 'password',title: '密码'},
                                                 {field: 'age',title: '年龄'},
@@ -369,7 +369,7 @@ layui.use('form', function () {
                 autoSort: false,
                 cols: [[ //表头
                     {checkbox: true, fixed: true},
-                    {field: 'id',title: 'id',fixed: 'left',width:'10%'},
+                    {title: 'id',fixed: 'left',width:'10%',type: "numbers"},
                     {field: 'name',title: '姓名'},
                     {field: 'password',title: '密码'},
                     {field: 'age',title: '年龄'},

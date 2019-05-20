@@ -6,14 +6,14 @@ function fly() {
 	var a = -1;
 	var t = 0.5;
 	var s = 0;
-	var img = $("#form_div>img");
-	img.css("top", "94px");
+	var img = $("#container>img");
+	img.css("top", "290px");
 	clearInterval(timer);
 	timer = setInterval(function() {
 		s = v * t + 0.5 * a * t * t;
 		v = v + a * t;
 		img.css("top", (img.position().top - s)+"px");
-		if(img.position().top>94)  clearInterval(timer);
+		if(img.position().top>290)  clearInterval(timer);
 	}, 10);
 }
 

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>图书管理系统登录</title>
+    <link rel="stylesheet" th:href="@{/css/login/login.css}" />
+    <script type="text/javascript" th:src="@{/js/layui/jquery.js}" ></script>
+    <script type="text/javascript" th:src="@{/js/login.js}" ></script>
+</head>
+<body>
+<div id="container">
+    <img th:src="@{/img/login/head.png}" />
+    <div id="form_head">
+        <div></div>
+        <span>密码登录:<br />请输入用户名和密码</span>
+    </div>
+    <div>
+        <form>
+            <input type="text" name="name" placeholder="用户名" />
+            <input type="password" name="password" placeholder="密码" />
+            <button type="submit" id="sub">登录</button>
+        </form>
+    </div>
+</div>
+<input id="username" th:value="${session.username}" style="display: none">
+
+<script>
+    // 实现自动登录
+    $(function () {
+        var username = $('#username').val();
+        if (username !== '') {
+            window.location.replace('/login/saveName.action');
+        }
+    });
+</script>
+
+<script th:src="@{/js/layui/layui.all.js}"></script>
+<script>
+    $("#sub").click(function () {
+        // 获取form表单的数据
+        var formData = $("form").serialize();
+        $.ajax({
+            type: 'POST',
+            url: '/login/login.action',
+            data: formData,
+            success: function (msg) {
+                // 登录成功
+                if (msg === 'yes') {
+                    window.location.replace('/login/saveName.action');
+                } else { // 登录失败
+                    layer.msg(msg);
+                }
+            }
+        });
+
+        return false;
+    });
+</script>
+
+</body>
+</html>
