@@ -175,7 +175,7 @@ layui.use('form', function () {
 
 function stateConv(state) {
 	if (state == 0) return '借阅';
-	else return '归还';
+	else return '已归还';
 }
 
 
